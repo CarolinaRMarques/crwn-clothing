@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest, all } from "redux-saga/effects";
 
 import {
 	convertCollectionsSnapshotToMap,
@@ -29,4 +29,8 @@ export function* fetchCollectionsStart() {
 		ShopActionTypes.FETCH_COLLECTIONS_START,
 		fetchCollectionsAsync
 	);
+}
+
+export function* shopSaga() {
+	yield all([call(fetchCollectionsStart)]);
 }
